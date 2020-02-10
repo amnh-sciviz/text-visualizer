@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Text visualizer</title>
+  <meta name="description" content="Very lightweight app for immersing yourself in messy text data">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/vendor/normalize.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+  <div id="app" class="app">
+    <div id="text-container" class="text-container"></div>
+    <form class="form-query">
+      <label for="select-data">Select a dataset</label>
+      <select name="select-data" id="select-data"></select>
+
+      <label for="input-query">Enter a query</label>
+      <input type="text" name="query" id="input-query" />
+
+      <label for="select-query">Or select a pre-built query</label>
+      <select name="select-query" id="select-query"></select>
+
+      <fieldset>
+        <legend>Select a mode:</legend>
+        <input id="mode-highlight" type="radio" name="mode" value="highlight" checked>
+        <label for="mode-highlight">Highlight</label>
+        <input id="mode-filter" type="radio" name="mode" value="filter">
+        <label for="mode-filter">Filter</label>
+      </fieldset>
+
+      <!-- <button type="submit">Submit</button> -->
+    </form>
+  </div>
+
+  <script src="js/vendor/jquery-3.4.1.min.js"></script>
+  <script src="js/vendor/underscore-min.js"></script>
+  <script src="js/vendor/papaparse.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>

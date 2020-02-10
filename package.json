@@ -1,0 +1,10 @@
+{
+  "name": "amnh-text-visualizer",
+  "description": "Very lightweight app for immersing yourself in messy text data",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}

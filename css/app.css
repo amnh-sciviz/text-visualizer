@@ -1,0 +1,87 @@
+body {
+  background: white;
+  color: black;
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+label,
+legend {
+  display: block;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
+  margin-top: 1rem;
+}
+fieldset label,
+fieldset input {
+  display: inline-block;
+  margin: 0;
+  font-weight: normal;
+  width: auto;
+}
+fieldset label {
+  margin: 0 1rem 0 0.2rem;
+}
+
+input,
+select {
+  width: 96%;
+  padding: 0.5rem 0;
+  border: 1px solid #ccc;
+}
+
+form button {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.app {
+
+}
+
+.form-query {
+  width: 240px;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: #eee;
+  border-left: 1px solid #ccc;
+}
+
+.text-container {
+  width: auto;
+  margin-right: 240px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+.text-container span {
+  display: inline-block;
+  margin: 0.2rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  background: #ccc;
+  opacity: 0.2;
+}
+.text-container span.active {
+  opacity: 1;
+}
+.text-container em {
+  color: #555;
+}
+
+.app[data-mode="filter"] .text-container span {
+  display: none;
+}
+.app[data-mode="filter"] .text-container span.active {
+  display: inline-block;
+}
