@@ -6,6 +6,7 @@ var App = (function() {
     var defaults = {
       "dataFiles": [],
       "queries": [],
+      "removeEmpty": true,
       "fontSizeRange": [0.75, 3] // in rems
     };
     this.opt = _.extend({}, defaults, config);
@@ -85,8 +86,12 @@ var App = (function() {
       e.preventDefault();
     });
 
-    this.$form.find("input, select").on("change", function(e){
+    $("#select-data, #input-query, #mode-highlight, #mode-filter").on("change", function(e){
       _this.onSubmit();
+    });
+
+    $("#select-query").on("change", function(){
+      _this.onSelectQuery($(this).val());
     });
   };
 
@@ -109,19 +114,24 @@ var App = (function() {
     }
     var re = new RegExp(pattern, flags);
     var $items = $("#text-container > span");
-
+    var matchCount = 0;
     _.each(this.data, function(item, i){
       if (query.length < 1) {
+        matchCount += item.count;
         $items.eq(i).addClass("active");
         return;
       }
       var matches = item.text.toString().match(re);
       if (matches && matches.length > 0) {
+        matchCount += item.count;
         $items.eq(i).addClass("active");
       } else {
         $items.eq(i).removeClass("active");
       }
-    })
+    });
+
+    // display match count
+    $("#matches").html("Found <strong>"+matchCount.toLocaleString()+"</strong> matches ("+(matchCount/this.total*100).toFixed(2)+"%)")
   };
 
   App.prototype.loadText = function(data){
@@ -152,7 +162,8 @@ var App = (function() {
     $("#select-data").html(html);
 
     html = "";
-    _.each(this.opt.queries, function(item, i){
+    var queries = [{"name": "- Select a query -", "query": ""}].concat(this.opt.queries);
+    _.each(queries, function(item, i){
       html += "<option value=\""+item.query+"\"";
       if (i===0) html += " selected";
       html += ">"+item.name+"</option>";
@@ -162,6 +173,12 @@ var App = (function() {
 
   App.prototype.onDataLoaded = function(result){
     this.loadingOff();
+  };
+
+  App.prototype.onSelectQuery = function(query){
+    $("#input-query").val(query);
+
+    if (query.length) $("#input-query").trigger("change")
   };
 
   App.prototype.onSubmit = function(){
@@ -194,8 +211,8 @@ var App = (function() {
       var dataChanged = (result !== true);
       if (dataChanged) {
         console.log("Changing data");
+        if (_this.opt.removeEmpty) result = _.filter(result, function(item){ return item.text !== "<empty>"; });
         _this.total = _.reduce(result, function(memo, item){ return memo + item.count; }, 0);
-        result = _.filter(result, function(item){ return item.text !== "<empty>"; })
         _this.data = result;
         _this.loadText(result);
       }
