@@ -1,6 +1,8 @@
 var CONFIG = {
   "dataFiles": [
     {"name": "Locales", "filename": "data/Locale.csv"},
+    {"name": "Countries", "filename": "data/Country.csv"},
+    {"name": "Donors", "filename": "data/Donor.csv"},
     {"name": "Acquisition Year", "filename": "data/Acquisition_Year.csv"}
   ],
   "queries": [
