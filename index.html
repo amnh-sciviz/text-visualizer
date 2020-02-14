@@ -21,6 +21,13 @@
 
       <label for="input-query">Enter a query</label>
       <input type="text" name="query" id="input-query" />
+      <p>Query instructions:</p>
+      <ul>
+        <li>Simple keyword search, e.g. <span class="nowrap">"Mexico"</span></li>
+        <li>Regular expressions start with <strong>~</strong> to search within a string, e.g. <span class="nowrap">"~[0-9]+"</span> returns all entries that contain a number</li>
+        <li>Regular expressions start with <strong>=</strong> for exact matches, e.g. <span class="nowrap">"=[0-9]+"</span> returns all entries that are numbers</li>
+        <li>All queries are case-insensitive</li>
+      </ul>
 
       <label for="select-query">Or select a pre-built query</label>
       <select name="select-query" id="select-query"></select>

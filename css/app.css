@@ -41,6 +41,21 @@ form button {
   font-size: 1.4rem;
 }
 
+form p,
+form li,
+form ul  {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+form ul,
+form p {
+  margin-top: 0.5rem;
+}
+form li {
+  margin-left: 1rem;
+}
+
 .app {
 
 }
@@ -84,4 +99,9 @@ form button {
 }
 .app[data-mode="filter"] .text-container span.active {
   display: inline-block;
+}
+
+.nowrap {
+  white-space: nowrap;
+  font-weight: bold;
 }
